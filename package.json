@@ -1,0 +1,33 @@
+{
+  "name": "03-api-solid",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "tsx watch src/server.ts",
+    "start": "node build/server.js",
+    "build": "tsup src --out-dir build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarcosJBM/03-api-solid.git"
+  },
+  "author": {
+    "name": "Marcos Botene",
+    "email": "marcosjbotene@gmail.com"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarcosJBM/03-api-solid/issues"
+  },
+  "homepage": "https://github.com/MarcosJBM/03-api-solid#readme",
+  "dependencies": {
+    "fastify": "^4.25.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.8",
+    "tsup": "^8.0.1",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
+  }
+}
