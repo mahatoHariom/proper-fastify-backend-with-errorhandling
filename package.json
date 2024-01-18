@@ -8,7 +8,10 @@
     "start": "node build/server.js",
     "build": "tsup src --out-dir build",
     "pretty": "prettier --write .",
-    "lint": "eslint --fix ."
+    "lint": "eslint --fix .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
   },
   "repository": {
     "type": "git",
@@ -34,6 +37,7 @@
     "@types/node": "20.10.8",
     "@typescript-eslint/eslint-plugin": "6.19.0",
     "@typescript-eslint/parser": "6.19.0",
+    "@vitest/coverage-v8": "1.2.1",
     "dotenv": "16.3.1",
     "eslint": "8.56.0",
     "eslint-config-prettier": "9.1.0",
