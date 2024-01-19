@@ -2,7 +2,7 @@ import { Prisma } from '@prisma/client';
 
 import { prisma } from '@/libs';
 
-import { UsersRepository } from '../users-repository';
+import { UsersRepository } from '..';
 
 export class PrismaUsersRepository implements UsersRepository {
   async findByEmail(email: string) {
