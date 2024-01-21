@@ -1,7 +1,7 @@
 import { CheckInsRepository, GymsRepository } from '@/repositories';
 import { getDistanceBetweenCoordinates } from '@/utils';
 
-import { ResourceNotFound } from './errors';
+import { ResourceNotFoundError } from './errors';
 
 interface CheckInUseCaseRequest {
   userId: string;
@@ -23,7 +23,7 @@ export class CheckInUseCase {
 
     const gym = await this.gymsRepository.findById(gymId);
 
-    if (!gym) throw new ResourceNotFound();
+    if (!gym) throw new ResourceNotFoundError();
 
     const distance = getDistanceBetweenCoordinates(
       {

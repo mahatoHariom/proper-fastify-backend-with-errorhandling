@@ -1,3 +1,3 @@
 export { InvalidCredentialsError } from './invalid-credentials-error';
-export { ResourceNotFound } from './resource-not-found';
+export { ResourceNotFoundError } from './resource-not-found-error';
 export { UserAlreadyExistsError } from './user-already-exists-error';

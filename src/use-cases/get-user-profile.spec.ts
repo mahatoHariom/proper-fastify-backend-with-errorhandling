@@ -3,7 +3,7 @@ import { beforeEach, describe, expect, it } from 'vitest';
 
 import { InMemoryUsersRepository } from '@/repositories';
 
-import { ResourceNotFound } from './errors';
+import { ResourceNotFoundError } from './errors';
 import { GetUserProfileUseCase } from './get-user-profile';
 
 let usersRepository: InMemoryUsersRepository;
@@ -34,6 +34,6 @@ describe('Get User Profile Use Case', () => {
       sut.handle({
         userId: 'non-existing-id',
       }),
-    ).rejects.toBeInstanceOf(ResourceNotFound);
+    ).rejects.toBeInstanceOf(ResourceNotFoundError);
   });
 });
