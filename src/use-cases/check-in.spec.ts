@@ -7,24 +7,28 @@ import {
 } from '@/repositories';
 
 import { CheckInUseCase } from './check-in';
+import {
+  MaxDistanceReachedError,
+  MaxNumberOfCheckInsReachedError,
+} from './errors';
 
 let checkInsRepository: InMemoryCheckInsRepository;
 let gymsRepository: InMemoryGymsRepository;
 let sut: CheckInUseCase;
 
 describe('Check-in Use Case', () => {
-  beforeEach(() => {
+  beforeEach(async () => {
     checkInsRepository = new InMemoryCheckInsRepository();
     gymsRepository = new InMemoryGymsRepository();
     sut = new CheckInUseCase(checkInsRepository, gymsRepository);
 
-    gymsRepository.items.push({
+    await gymsRepository.create({
       id: 'gym-01',
       description: '',
       latitude: new Decimal(-27.105437),
       longitude: new Decimal(-48.9210107),
       phone: '',
-      title: 'Life Up Academia',
+      title: 'Life Up',
     });
 
     vi.useFakeTimers();
@@ -62,7 +66,7 @@ describe('Check-in Use Case', () => {
         userLatitude: -27.105437,
         userLongitude: -48.9210107,
       }),
-    ).rejects.toBeInstanceOf(Error);
+    ).rejects.toBeInstanceOf(MaxNumberOfCheckInsReachedError);
   });
 
   it('should be able to check in twice in different days', async () => {
@@ -104,6 +108,6 @@ describe('Check-in Use Case', () => {
         userLatitude: -27.105437,
         userLongitude: -48.9210107,
       }),
-    ).rejects.toBeInstanceOf(Error);
+    ).rejects.toBeInstanceOf(MaxDistanceReachedError);
   });
 });
