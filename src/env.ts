@@ -17,6 +17,10 @@ const envSchema = z.object({
       required_error: 'PORT is required',
     })
     .default(3333),
+  JWT_SECRET: z.string({
+    invalid_type_error: 'JWT_SECRET has an invalid type',
+    required_error: 'JWT_SECRET is required',
+  }),
 });
 
 const _env = envSchema.safeParse(process.env);
