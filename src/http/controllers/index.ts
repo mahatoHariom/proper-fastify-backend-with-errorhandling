@@ -1,3 +1,2 @@
-export { authenticate } from './authenticate';
-export { profile } from './profile';
-export { register } from './register';
+export { gymsRoutes } from './gyms';
+export { usersRoutes } from './users';

@@ -1,1 +1,1 @@
-export { appRoutes } from './routes';
+export { gymsRoutes, usersRoutes } from './controllers';
