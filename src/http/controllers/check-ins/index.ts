@@ -1,0 +1,1 @@
+export { checkInsRoutes } from './routes';
