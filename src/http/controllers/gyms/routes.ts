@@ -1,6 +1,6 @@
 import { FastifyInstance } from 'fastify';
 
-import { verifyJwt } from '@/http/middlewares';
+import { verifyJwt, verifyUserRole } from '@/http/middlewares';
 
 import { createGym } from './create-gym';
 import { fetchNearbyGyms } from './fetch-nearby-gyms';
@@ -12,5 +12,5 @@ export async function gymsRoutes(app: FastifyInstance) {
   app.get('/gyms/search', searchGyms);
   app.get('/gyms/nearby', fetchNearbyGyms);
 
-  app.post('/gyms', createGym);
+  app.post('/gyms', { onRequest: [verifyUserRole('ADMIN')] }, createGym);
 }
