@@ -17,4 +17,7 @@ jobs:
 
       - run: npm ci
 
+      - name: Run Tests with JWT_SECRET
+        env:
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
       - run: npm run test
