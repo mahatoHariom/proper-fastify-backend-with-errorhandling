@@ -1,7 +1,7 @@
 {
   "name": "03-api-solid",
   "version": "1.0.0",
-  "description": "",
+  "description": "Gym check-ins API developed using SOLID, TDD, Design Patterns, and other concepts.",
   "main": "index.js",
   "scripts": {
     "start:dev": "tsx watch src/server.ts",
@@ -23,11 +23,13 @@
   },
   "author": {
     "name": "Marcos Botene",
-    "email": "marcosjbotene@gmail.com"
+    "email": "marcosjbotene@gmail.com",
+    "url": "https://github.com/MarcosJBM"
   },
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/MarcosJBM/03-api-solid/issues"
+    "url": "https://github.com/MarcosJBM/03-api-solid/issues",
+    "email": "marcosjbotene@gmail.com"
   },
   "homepage": "https://github.com/MarcosJBM/03-api-solid#readme",
   "dependencies": {
