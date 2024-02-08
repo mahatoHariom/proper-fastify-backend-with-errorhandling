@@ -1,5 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextSearch"]
 }
 
 datasource db {
@@ -7,47 +8,42 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum Role {
-  ADMIN
-  MEMBER
-}
-
 model User {
-  id            String   @id @default(uuid())
+  id        String    @id @default(cuid())
+  name      String
+  email     String    @unique
+  password  String
+  role      UserRole  @default(user)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  Product   Product[]
+}
+
+model Product {
+  id            String   @id @default(cuid())
   name          String
-  email         String   @unique
-  password_hash String
-  role          Role     @default(MEMBER)
-  created_at    DateTime @default(now())
-
-  checkIns CheckIn[]
-
-  @@map("users")
+  description   String
+  category      String
+  originalPrice Int
+  discountPrice Int
+  stock         Int
+  user          User     @relation(fields: [userId], references: [id])
+  userId        String
+  images        Image[]
+  soldOut       Int?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 }
 
-model CheckIn {
-  id           String    @id @default(uuid())
-  created_at   DateTime  @default(now())
-  validated_at DateTime?
-
-  user    User   @relation(fields: [user_id], references: [id])
-  user_id String
-
-  gym    Gym    @relation(fields: [gym_id], references: [id])
-  gym_id String
-
-  @@map("check_ins")
+model Image {
+  id        String   @id @default(cuid())
+  public_id String
+  imgSrc    String
+  product   Product? @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId String?
 }
 
-model Gym {
-  id          String  @id @default(uuid())
-  title       String
-  description String?
-  phone       String?
-  latitude    Decimal
-  longitude   Decimal
-
-  checkIns CheckIn[]
-
-  @@map("gyms")
+enum UserRole {
+  admin
+  user
 }

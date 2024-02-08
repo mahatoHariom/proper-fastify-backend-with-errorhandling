@@ -1,1 +1,0 @@
-export { gymsRoutes } from './routes';

@@ -1,4 +1,4 @@
-export { AuthenticateUseCase } from './authenticate';
-export * from './errors';
-export * from './factories';
-export { RegisterUseCase } from './register';
+export { AuthenticateUseCase } from './auth/authenticate'
+// export * from './errors';
+export * from './factories'
+export { RegisterUseCase } from './auth/register'

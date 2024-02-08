@@ -1,1 +1,1 @@
-export { checkInsRoutes, gymsRoutes, usersRoutes } from './controllers';
+export { usersRoutes } from './controllers'
