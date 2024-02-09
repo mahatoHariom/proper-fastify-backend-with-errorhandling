@@ -1,4 +1,5 @@
-import { User } from './user.type'
+// import { User } from './user.type'
+import { User } from '@prisma/client'
 import { Redis } from 'ioredis'
 
 declare module '@fastify/jwt' {

@@ -34,7 +34,7 @@ export async function authRoutes(app: FastifyInstance) {
     authenticate
   )
 
-  app.get('/auth/token/refresh', { onRequest: [app.authenticate] }, refresh)
+  app.get('/refresh', { onRequest: [app.authenticate] }, refresh)
 
-  app.get('/auth/me', { onRequest: [app.authenticate] }, profile)
+  app.get('/me', { onRequest: [app.authenticate] }, profile)
 }
